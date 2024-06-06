@@ -2,6 +2,21 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\API\AdvertiserController;
+use App\Http\Controllers\API\LocationController;
+use App\Http\Controllers\API\AdController;
+use App\Http\Controllers\API\AuthController;
+
+Route::middleware('auth:sanctum')->group(function () {
+    Route::apiResource('advertisers', AdvertiserController::class);
+    Route::apiResource('locations', LocationController::class);
+    Route::apiResource('ads', AdController::class);
+});
+
+Route::post('register', [AuthController::class, 'register']);
+Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
+
 
 /*
 |--------------------------------------------------------------------------

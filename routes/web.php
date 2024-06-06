@@ -1,6 +1,24 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Advertiser;
+use App\Models\Location;
+use App\Models\Ad;
+
+Route::get('/', function () {
+    $advertisers = Advertiser::all();
+    return view('advertisers', compact('advertisers'));
+});
+
+Route::get('/locations', function () {
+    $locations = Location::all();
+    return view('locations', compact('locations'));
+});
+
+Route::get('/ads', function () {
+    $ads = Ad::all();
+    return view('ads', compact('ads'));
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +31,4 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+

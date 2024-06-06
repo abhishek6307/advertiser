@@ -62,4 +62,7 @@ return [
         'encrypt_cookies' => App\Http\Middleware\EncryptCookies::class,
     ],
 
+    'stateful' => explode(',', env('SANCTUM_STATEFUL_DOMAINS', 'localhost')),
+
+
 ];
